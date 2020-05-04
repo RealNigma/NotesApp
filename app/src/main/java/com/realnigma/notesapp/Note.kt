@@ -4,6 +4,7 @@ import android.media.Image
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 import java.util.*
 
 @Entity(tableName = "notes")
@@ -13,4 +14,4 @@ data class Note
      val text : String,
      val createDate : Long,
      val editDate : Long
-    )
+    ) : Serializable

@@ -15,7 +15,8 @@ class NoteAdapter internal constructor(context : Context) : RecyclerView.Adapter
     private var notes = emptyList<Note>()
 
     inner class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var noteItemView: TextView = itemView.findViewById(R.id.noteTextView)
+        var noteTitleItemView: TextView = itemView.findViewById(R.id.noteTitle)
+        var noteTextItemView : TextView = itemView.findViewById(R.id.noteText)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -25,7 +26,8 @@ class NoteAdapter internal constructor(context : Context) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val current = notes[position]
-        holder.noteItemView.text = current.text
+        holder.noteTitleItemView.text = current.title
+        holder.noteTextItemView.text = current.text
     }
 
     internal fun getAllNotes(notes: List<Note>) {
