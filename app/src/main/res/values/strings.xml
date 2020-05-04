@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">NotesApp</string>
+    <string name="message">Message</string>
+    <string name="send_button_label">Send</string>
+    <string name="delete_button">Delete all</string>
+    <string name="add_note">Add note</string>
 </resources>

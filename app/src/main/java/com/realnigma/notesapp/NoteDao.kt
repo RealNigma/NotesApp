@@ -1,11 +1,15 @@
 package com.realnigma.notesapp
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
 interface NoteDao {
     @Query("SELECT * FROM notes")
-    fun getAll(): List<Note>
+    fun getAllNotes(): LiveData<List<Note>>
+
+    @Query("DELETE FROM notes")
+    fun deleteAllNotes()
 
     @Insert
     fun insertNote(note : Note)

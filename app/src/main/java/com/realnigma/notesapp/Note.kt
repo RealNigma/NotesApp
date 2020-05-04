@@ -11,6 +11,6 @@ data class Note
     (@PrimaryKey(autoGenerate = true) val id : Int,
      @ColumnInfo val title : String,
      val text : String,
-     val createDate : Date,
-     val editDate : Date
+     val createDate : Long,
+     val editDate : Long
     )
