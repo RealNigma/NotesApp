@@ -23,7 +23,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
             tools:text="Title" />
-
         <TextView
             android:id="@+id/noteText"
             android:layout_width="wrap_content"
@@ -31,6 +30,30 @@
             android:layout_margin="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             tools:text="Text" />
+        <TextView
+            android:id="@+id/noteID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:visibility="gone"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            tools:text="0" />
+        <TextView
+            android:id="@+id/noteCreateDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:visibility="gone"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            tools:text="10.10.20" />
+        <TextView
+            android:id="@+id/noteEditDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:visibility="gone"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            tools:text="10.10.20" />
 
         <View
             android:id="@+id/divider"

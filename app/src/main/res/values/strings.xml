@@ -6,6 +6,8 @@
     <string name="add_note">Add note</string>
     <string name="hint_note">Note…</string>
     <string name="button_save">Save</string>
-    <string name="empty_not_saved">Word not saved because it is empty.</string>
+    <string name="empty_not_saved">Note not saved because it is empty.</string>
     <string name="delete_all">Delete All</string>
+    <string name="hint_text">Note text</string>
+    <string name="hint_title">Note title</string>
 </resources>

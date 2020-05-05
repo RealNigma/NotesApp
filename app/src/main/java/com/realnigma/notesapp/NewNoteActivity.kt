@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import kotlinx.android.synthetic.main.activity_new_note.*
+import java.time.Instant.now
 import java.time.LocalDate
+import java.util.*
 
 class NewNoteActivity : AppCompatActivity() {
 
@@ -21,7 +23,7 @@ class NewNoteActivity : AppCompatActivity() {
             } else {
                 val noteTitle = noteTitle.text.toString()
                 val noteText = noteText.text.toString()
-                val note = Note(0, noteTitle, noteText,0,0)
+                val note = Note(0, noteTitle, noteText, getCurrentDate(), getCurrentDate())
                 replyIntent.putExtra(EXTRA_REPLY, note)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
@@ -33,9 +35,8 @@ class NewNoteActivity : AppCompatActivity() {
         const val EXTRA_REPLY = "com.realnigma.android.notelistsql.REPLY"
     }
 
-    fun getCurrentDate() : Long {
-        //LocalDate.now().toLong()
-        return 0
+    private fun getCurrentDate() : Date {
+        return Calendar.getInstance().time
     }
 
 }

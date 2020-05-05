@@ -12,6 +12,7 @@ data class Note
     (@PrimaryKey(autoGenerate = true) val id : Int,
      @ColumnInfo val title : String,
      val text : String,
-     val createDate : Long,
-     val editDate : Long
+     val createDate : Date?,
+     val editDate : Date?
     ) : Serializable
+

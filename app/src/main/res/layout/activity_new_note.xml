@@ -1,39 +1,60 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/noteTitle"
-        android:autofillHints="true"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="@dimen/min_height"
-        android:fontFamily="sans-serif-light"
-        android:hint="@string/hint_note"
-        android:inputType="textAutoComplete"
-        android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp" />
+        android:layout_margin="@dimen/small_padding"
+        app:cardBackgroundColor="@color/noteDefaultColor"
+        app:cardElevation="2dp">
 
-    <EditText
-        android:id="@+id/noteText"
-        android:autofillHints="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="10"
-        android:lines="4"
-        android:minHeight="@dimen/min_height"
-        android:fontFamily="sans-serif-light"
-        android:hint="@string/hint_note"
-        android:inputType="textMultiLine"
-        android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/noteTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_padding"
+                android:layout_marginStart="@dimen/small_padding"
+                android:layout_marginEnd="@dimen/small_padding"
+                android:autofillHints="true"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/hint_title"
+                android:inputType="textAutoComplete"
+                android:minHeight="@dimen/min_height"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/noteText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_padding"
+                android:layout_marginEnd="@dimen/small_padding"
+                android:layout_marginBottom="@dimen/small_padding"
+                android:autofillHints="true"
+                android:fontFamily="sans-serif-light"
+                android:gravity="start"
+                android:hint="@string/hint_text"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:maxLines="10"
+                android:minHeight="@dimen/min_height"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/button_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/big_padding"
+        android:layout_margin="@dimen/small_padding"
         android:background="@color/colorPrimary"
         android:text="@string/button_save" />
 
