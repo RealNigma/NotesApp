@@ -16,4 +16,16 @@ val notes: LiveData<List<Note>> = noteDao.getAllNotes()
     suspend fun insertNote (note : Note) {
         noteDao.insertNote(note)
     }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun updateNote (note : Note) {
+        noteDao.updateNote(note)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun deleteNote (note : Note) {
+        noteDao.deleteNote(note)
+    }
 }

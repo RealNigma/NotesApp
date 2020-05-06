@@ -8,7 +8,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.*
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,7 +15,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var noteViewModel : NoteViewModel
-    private val newNoteActivityRequestCode = 1
+    private val addNoteRequestCode = 1
+    private val editNoteRequestCode = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun fabListener() {
         fab.setOnClickListener {
-            val intent = Intent(this@MainActivity, NewNoteActivity::class.java)
-            startActivityForResult(intent, newNoteActivityRequestCode)
+            val intent = Intent(this@MainActivity, SaveNoteActivity::class.java)
+            startActivityForResult(intent, addNoteRequestCode)
         }
     }
 
@@ -39,6 +39,18 @@ class MainActivity : AppCompatActivity() {
         noteRecyclerView.adapter = adapter
         noteRecyclerView.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+
+        adapter.setOnItemClickListener(object : NoteAdapter.OnItemClickListener {
+            override fun onItemClick(position: Int, note: Note) {
+                val intent = Intent(this@MainActivity, SaveNoteActivity::class.java)
+                intent.putExtra(SaveNoteActivity.EXTRA_REPLY, note)
+                startActivityForResult(intent, editNoteRequestCode)
+            }
+
+            override fun onDeleteButtonClick(note: Note) {
+                noteViewModel.deleteNote(note)
+            }
+        })
         return adapter
     }
 
@@ -52,18 +64,36 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)
 
-        if (requestCode == newNoteActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            intentData?.let {
-                val note = intentData.getSerializableExtra(NewNoteActivity.EXTRA_REPLY) as Note
-                noteViewModel.insertNote(note)
-                Unit
-            }
-        } else {
-            Toast.makeText(
-                applicationContext,
-                R.string.empty_not_saved,
-                Toast.LENGTH_LONG
-            ).show()
+        when(resultCode) {
+            Activity.RESULT_OK -> when(requestCode) {
+                                    1 -> addNewNote(intentData)
+                                    2 -> editNote(intentData)
+                                    }
+            //Activity.RESULT_CANCELED -> notSavedToast()
+        }
+    }
+
+    private fun editNote(intentData: Intent?) {
+        intentData?.let {
+            val note = intentData.getSerializableExtra(SaveNoteActivity.EXTRA_REPLY) as Note
+            noteViewModel.updateNote(note)
+            Unit
+        }
+    }
+
+    private fun notSavedToast() {
+        Toast.makeText(
+            applicationContext,
+            R.string.note_is_not_saved,
+            Toast.LENGTH_LONG
+        ).show()
+    }
+
+    private fun addNewNote(intentData: Intent?) {
+        intentData?.let {
+            val note = intentData.getSerializableExtra(SaveNoteActivity.EXTRA_REPLY) as Note
+            noteViewModel.insertNote(note)
+            Unit
         }
     }
 

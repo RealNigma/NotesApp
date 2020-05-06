@@ -8,19 +8,25 @@
     app:cardBackgroundColor="@color/noteDefaultColor"
     app:cardElevation="2dp">
 
-    <!-- Пример комментария -->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <Button
+            android:id="@+id/noteDeleteButton"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="end"
+            android:background="@drawable/ic_close_black_24dp" />
+
 
         <TextView
             android:id="@+id/noteTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:layout_marginRight="8dp"
             tools:text="Title" />
         <TextView
@@ -54,6 +60,7 @@
             android:visibility="gone"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             tools:text="10.10.20" />
+
 
         <View
             android:id="@+id/divider"
