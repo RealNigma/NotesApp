@@ -1,4 +1,4 @@
-package com.realnigma.notesapp
+package com.realnigma.notesapp.view
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.realnigma.notesapp.R
+import com.realnigma.notesapp.room.Note
 
 class NoteAdapter internal constructor(context : Context) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 

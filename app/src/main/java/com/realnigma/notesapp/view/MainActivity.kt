@@ -1,4 +1,4 @@
-package com.realnigma.notesapp
+package com.realnigma.notesapp.view
 
 import android.app.Activity
 import android.content.Intent
@@ -9,6 +9,9 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.realnigma.notesapp.viewmodel.NoteViewModel
+import com.realnigma.notesapp.R
+import com.realnigma.notesapp.room.Note
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -39,7 +42,8 @@ class MainActivity : AppCompatActivity() {
         noteRecyclerView.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
-        adapter.setOnItemClickListener(object : NoteAdapter.OnItemClickListener {
+        adapter.setOnItemClickListener(object :
+            NoteAdapter.OnItemClickListener {
             override fun onItemClick(position: Int, note: Note) {
                 val intent = Intent(this@MainActivity, SaveNoteActivity::class.java)
                 intent.putExtra(SaveNoteActivity.EXTRA_REPLY, note)
@@ -68,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                                     1 -> addNewNote(intentData)
                                     2 -> editNote(intentData)
                                     }
-            //Activity.RESULT_CANCELED -> notSavedToast()
+            Activity.RESULT_CANCELED -> notSavedToast()
         }
     }
 

@@ -1,7 +1,8 @@
-package com.realnigma.notesapp
+package com.realnigma.notesapp.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.realnigma.notesapp.room.Note
 
 @Dao
 interface NoteDao {

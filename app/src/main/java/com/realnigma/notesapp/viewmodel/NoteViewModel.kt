@@ -1,9 +1,12 @@
-package com.realnigma.notesapp
+package com.realnigma.notesapp.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.realnigma.notesapp.repository.NoteRepository
+import com.realnigma.notesapp.room.Note
+import com.realnigma.notesapp.room.NoteDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

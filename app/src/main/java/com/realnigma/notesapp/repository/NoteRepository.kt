@@ -1,7 +1,9 @@
-package com.realnigma.notesapp
+package com.realnigma.notesapp.repository
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
+import com.realnigma.notesapp.room.Note
+import com.realnigma.notesapp.room.NoteDao
 
 class NoteRepository (private val noteDao: NoteDao) {
 

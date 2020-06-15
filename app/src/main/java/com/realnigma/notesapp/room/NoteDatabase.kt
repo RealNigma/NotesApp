@@ -1,4 +1,4 @@
-package com.realnigma.notesapp
+package com.realnigma.notesapp.room
 
 import android.content.Context
 import androidx.room.Database
@@ -33,7 +33,11 @@ abstract class NoteDatabase : RoomDatabase() {
                         "note_database"
                     )
                         .fallbackToDestructiveMigration()
-                        .addCallback(NoteDatabaseCallback(scope))
+                        .addCallback(
+                            NoteDatabaseCallback(
+                                scope
+                            )
+                        )
                         .build()
                     INSTANCE = instance
                     instance
@@ -42,7 +46,7 @@ abstract class NoteDatabase : RoomDatabase() {
 
         private class NoteDatabaseCallback(
             private val scope: CoroutineScope
-        ) : RoomDatabase.Callback(){
+        ) : RoomDatabase.Callback() {
 
             override fun onCreate(db: SupportSQLiteDatabase) {
                 super.onCreate(db)
@@ -54,11 +58,29 @@ abstract class NoteDatabase : RoomDatabase() {
             }
 
             fun populateDatabase(noteDao : NoteDao) {
-                var note = Note(0,"TODO","Be awesome",getCurrentDate(),getCurrentDate())
+                var note = Note(
+                    0,
+                    "TODO",
+                    "Be awesome",
+                    getCurrentDate(),
+                    getCurrentDate()
+                )
                 noteDao.insertNote(note)
-                note = Note(0,"Lorem ipsum","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",getCurrentDate(),getCurrentDate())
+                note = Note(
+                    0,
+                    "Lorem ipsum",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                    getCurrentDate(),
+                    getCurrentDate()
+                )
                 noteDao.insertNote(note)
-                note = Note(0,"TODO","Visit London",getCurrentDate(),getCurrentDate())
+                note = Note(
+                    0,
+                    "TODO",
+                    "Visit London",
+                    getCurrentDate(),
+                    getCurrentDate()
+                )
                 noteDao.insertNote(note)
 
             }

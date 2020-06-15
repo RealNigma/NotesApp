@@ -1,4 +1,4 @@
-package com.realnigma.notesapp
+package com.realnigma.notesapp.room
 
 import android.media.Image
 import androidx.room.ColumnInfo

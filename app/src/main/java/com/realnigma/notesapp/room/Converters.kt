@@ -1,4 +1,4 @@
-package com.realnigma.notesapp
+package com.realnigma.notesapp.room
 
 import androidx.room.TypeConverter
 import java.util.*
